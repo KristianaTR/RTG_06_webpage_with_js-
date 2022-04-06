@@ -20,17 +20,6 @@ const getEntryAnswer = function(answer){
 };
 
 function openAnswer(entryAnswer){
-    /*const isVisible = entryAnswer.className.includes(visible);
-
-    //if is visible -> hide the answer
-    if (isVisible) {
-        entryAnswer.className = `answer ${hidden}`;
-    }
-
-    //if not visible -> show the answer
-    if (!isVisible) {
-        entryAnswer.className = `answer ${visible}`;
-    }*/
 
     entryAnswer.classList.toggle("answer-hidden");
 };
@@ -53,7 +42,40 @@ function hideOtherQuestions (currentAnswer) {
         question.classList.add("right");
     });
 };
+/* WILL USE THIS TO MAKE HTML via JS
+const faqButtons = function addFaqButtons (){
+    const faqElement = document.getElementById("faq");
 
+    const faqContainer = document.createElement("div");
+    faqContainer.className = "AnswerButton_container";
+
+};*/
+
+function openAllAnswers(){
+    const answers = document.querySelectorAll("#faq .question_container");
+    answers.forEach(function(questionContainer){
+        const question = questionContainer.querySelector(".question");
+       
+        const answer = questionContainer.querySelector(".answer");
+        
+        answer.classList.remove("answer-hidden");
+        question.classList.add("bottom");
+        question.classList.remove("right");
+    });
+};
+
+function closeAllAnswers(){
+    const answers = document.querySelectorAll("#faq .question_container");
+    answers.forEach(function(questionContainer){
+        const question = questionContainer.querySelector(".question");
+       
+        const answer = questionContainer.querySelector(".answer");
+        
+        answer.classList.add("answer-hidden");
+        question.classList.remove("bottom");
+        question.classList.add("right");
+    });
+};
 
 const faqList = function addQandAnsw () {
     const faqData = [
@@ -98,7 +120,7 @@ const faqList = function addQandAnsw () {
     
 
     const faqElement = document.getElementById("faq");
-    faqElement.innerHTML = "";
+    //faqElement.innerHTML = "";
 
     const faqContainer = document.createElement("div");
     faqContainer.id = "faq-container";
